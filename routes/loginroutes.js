@@ -128,7 +128,6 @@ exports.employeeList = function(req, res) {
       console.log("The solution is: ", results);
       res.send({
         code: 200,
-        success: "list displaying Successfully",
         results
       });
     }
@@ -136,6 +135,7 @@ exports.employeeList = function(req, res) {
 };
 
 exports.employeeUpdate = function(req, res) {
+  var today = new Date();
   var employeedetails = {
     UserName: req.body.UserName,
     EmailId: req.body.EmailId,
@@ -143,10 +143,16 @@ exports.employeeUpdate = function(req, res) {
     created: today
   };
   connection.query(
-    "UPDATE `employeeuser` SET `Details` = 'Inseting from postman1' WHERE `employeeuser`.`id` = 3",
+    // "UPDATE `employeeuser` SET `UserName`= `" +
+    //   employeedetails.UserName +
+    //   "` WHERE `employeeuser`.`id` = 3",
+
+    "UPDATE `employeeuser` SET `UserName` = '" +
+      employeedetails.UserName +
+      "' WHERE `employeeuser`.`id` = 1",
     function(error, results) {
       if (error) {
-        // console.log("error ocurred",error);
+        console.log("error ocurred", error);
         res.send({
           code: 400,
           failed: "error ocurred"

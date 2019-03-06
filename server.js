@@ -20,6 +20,7 @@ router.get("/", function(req, res) {
 //route to handle user registration
 router.post("/register", login.register);
 router.post("/login", login.login);
+router.put("/employeeUpdate", login.employeeUpdate);
 router.post("/employeeUser", login.employeeUser);
 router.get("/employeeList", login.employeeList);
 //get,put,post
